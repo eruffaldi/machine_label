@@ -45,11 +45,13 @@ def main():
     parser.add_argument('--name',default="")
     parser.add_argument('--icon',default="")
     parser.add_argument('--output',required=True)
+    parser.add_argument('--width',default=41,type=int,help="width in mm")
+    parser.add_argument('--height',default=31,type=int,help="height in mm")
     
     args = parser.parse_args()
 
     mm2pts = 2.83464567
-    page = (41,31)
+    page = (args.width,args.height)
     width_pts, height_pts = page[0]*mm2pts,page[1]*mm2pts
     surface = cairo.PDFSurface (args.output, width_pts, height_pts)
     ctx = cairo.Context (surface)
