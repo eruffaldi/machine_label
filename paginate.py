@@ -12,6 +12,8 @@ class Rect:
         self.width=w
         self.height=h
         self.rid=rid
+    def __repr__(self):
+        return str((self.x,self.y,self.width,self.height,self.rid))
 
 class BinAllocated(list):
     def __init__(self,w,h):
@@ -101,6 +103,7 @@ def main():
         a =PyPDF2.PdfFileReader(open(x,"rb"))
         # all pages
         for j in range(0,a.getNumPages()):
+            print "adding",x,j
             mb = a.getPage(j).mediaBox
             ll =mb.lowerLeft
             ur =mb.upperRight
@@ -132,7 +135,7 @@ def main():
         nrect = len(packer[i])
         for j in range(0,nrect):
             rect = packer[i][j]
-            print rect,rect.rid
+            print "result",i,j,rect,rect.rid
             a,pagenum =contents[rect.rid]
             page.mergeTranslatedPage(a.getPage(pagenum), (args.margin+args.spacing+rect.x)*mm2pts,(args.margin+args.spacing+rect.y)*mm2pts)
 

@@ -18,4 +18,5 @@ Workflow:
 
 
 python make1.py --url http://www.percro.org/dev/1 --name SSSA-1 --icon icons/icons/Alligator.png --output p1.pdf
-python paginate.py --page A3 p*.pdf --output x.pdf
+
+python paginate.py --page A3 p*.pdf --output x.pdf --allsame --margin 15 --spacing 10
